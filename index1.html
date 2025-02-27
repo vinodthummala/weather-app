@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link href="https://pro.fontawesome.com/releases/v6.0.0-beta/css/all.css" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Weather</h2>
+            <div class="weather-input">
+                <input type="text" name="city" id="cityInput" placeholder="Enter city name">
+                <button type="button" id="searchBtn">
+                    <i class="fa-regular fa-search"></i> Search
+                </button>
+                <button type="button" id="locationBtn">
+                    <i class="bx bx-target-lock"></i> Current
+                </button>
+            </div>
+        </div>
+
+        <div class="weather-data"> <!-- Section for displaying weather data -->
+            <div class="weather-left">
+                <div class="card">
+                    <div class="current-weather">
+                        <div class="details">
+                            <p>Now</p>
+                            <h2>_&deg;C</h2> <!-- Placeholder for current temperature -->
+                            <p></p> <!-- Placeholder for weather condition (e.g., Sunny) -->
+                        </div>
+
+                        <div class="weather-icon">
+                            <img src="https://openweathermap.org/img/wn/04d@2x.png" alt="Weather Icon">
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="card-footer">
+                        <p><i class="fa-light fa-calendar"></i> <!-- Add date here --></p>
+                        <p><i class="fa-light fa-location-dot"></i> <!-- Add location here --></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="weather-right"> <!-- Today's Highlights section -->
+                <h2>Today's Highlights</h2>
+                <div class="highlights">
+                    <div class="card">
+                        <p class="humidity"></p> <!-- Added for humidity -->
+                        <p class="pressure"></p> <!-- Added for pressure -->
+                        <p class="visibility"></p> <!-- Added for visibility -->
+                        <p class="feels-like"></p> <!-- Added for feels-like -->
+                    </div>
+                </div>
+            </div>
+        </div> <!-- Closing the weather-data section -->
+
+        <div class="card"> <!-- Section for 5-day weather forecast -->
+            <h2>5 Days Forecast</h2>
+            <div class="day-forecast">
+                <div class="forecast-item">
+                    <div class="icon-wrapper">
+                        <img src="https://openweathermap.org/img/wn/02d.png" alt="Weather Icon">
+                        <span>_&deg;C</span> <!-- Placeholder for forecast temperature -->
+                    </div>
+                    <p><!-- Placeholder for day or date --></p>
+                    <p><!-- Placeholder for additional info (e.g., wind speed, humidity) --></p>
+                </div>
+                <div class="forecast-item">
+                    <div class="icon-wrapper">
+                        <img src="https://openweathermap.org/img/wn/02d.png" alt="Weather Icon">
+                        <span>_&deg;C</span> <!-- Placeholder for forecast temperature -->
+                    </div>
+                    <p><!-- Placeholder for day or date --></p>
+                    <p><!-- Placeholder for additional info (e.g., wind speed, humidity) --></p>
+                </div>
+                <div class="forecast-item">
+                    <div class="icon-wrapper">
+                        <img src="https://openweathermap.org/img/wn/02d.png" alt="Weather Icon">
+                        <span>_&deg;C</span> <!-- Placeholder for forecast temperature -->
+                    </div>
+                    <p><!-- Placeholder for day or date --></p>
+                    <p><!-- Placeholder for additional info (e.g., wind speed, humidity) --></p>
+                </div>
+                <div class="forecast-item">
+                    <div class="icon-wrapper">
+                        <img src="https://openweathermap.org/img/wn/02d.png" alt="Weather Icon">
+                        <span>_&deg;C</span> <!-- Placeholder for forecast temperature -->
+                    </div>
+                    <p><!-- Placeholder for day or date --></p>
+                    <p><!-- Placeholder for additional info (e.g., wind speed, humidity) --></p>
+                </div>
+                <div class="forecast-item">
+                    <div class="icon-wrapper">
+                        <img src="https://openweathermap.org/img/wn/02d.png" alt="Weather Icon">
+                        <span>_&deg;C</span> <!-- Placeholder for forecast temperature -->
+                    </div>
+                    <p><!-- Placeholder for day or date --></p>
+                    <p><!-- Placeholder for additional info (e.g., wind speed, humidity) --></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="today-at">
+            <h2>Today at</h2>
+            <div class="today-timings">
+                <div class="timing-item">
+                    <p>6 AM</p>
+                    <span>_&deg;C</span> <!-- Placeholder for temperature -->
+                </div>
+                <div class="timing-item">
+                    <p>9 AM</p>
+                    <span>_&deg;C</span> <!-- Placeholder for temperature -->
+                </div>
+                <div class="timing-item">
+                    <p>12 PM</p>
+                    <span>_&deg;C</span> <!-- Placeholder for temperature -->
+                </div>
+                <div class="timing-item">
+                    <p>3 PM</p>
+                    <span>_&deg;C</span> <!-- Placeholder for temperature -->
+                </div>
+                <div class="timing-item">
+                    <p>6 PM</p>
+                    <span>_&deg;C</span> <!-- Placeholder for temperature -->
+                </div>
+                <div class="timing-item">
+                    <p>9 PM</p>
+                    <span>_&deg;C</span> <!-- Placeholder for temperature -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to extract query parameters from the URL
+        function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                city: params.get('city'),
+                lat: params.get('lat'),
+                lon: params.get('lon')
+            };
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const { city, lat, lon } = getQueryParams();
+
+            if (city) {
+                getWeatherData(city); // Function to fetch weather data by city
+            } else if (lat && lon) {
+                getWeatherDataByCoords(lat, lon); // Function to fetch weather data by coordinates
+            }
+        });
+    </script>
+
+    <script src="script.js"></script> <!-- Link to your JavaScript file -->
+</body>
+</html>
