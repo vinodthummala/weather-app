@@ -1,0 +1,129 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative; /* Set position relative for pseudo-element */
+    overflow: hidden; /* Prevent overflow */
+    font-family: Arial, sans-serif; 
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("weatherbg.jpg"); /* Background image */
+    background-size: cover; /* Cover the entire area */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent repetition */
+    /* filter: blur(8px); Apply blur effect */
+    z-index: 1; /* Position behind the content */
+}
+
+.main-container {
+    position: relative; /* Position relative to stack above the blur */
+    text-align: center;
+    background: rgba(255, 255, 255, 0.8); /* White background with slight transparency */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 400px; 
+    width: 100%; 
+    z-index: 2; /* Position above the blur */
+}
+
+.weather-title {
+    font-size: 24px; /* Adjust font size */
+    margin-bottom: 20px; /* Space below the title */
+}
+
+.weather-title i {
+    color: #ffcc00; /* Sun icon color */
+    margin-right: 5px; /* Space between icon and text */
+}
+
+.welcome-section {
+    margin-bottom: 20px; /* Space between welcome text and input */
+}
+
+.welcome-text {
+    font-size: 24px; /* Adjust font size */
+}
+
+.weather-input {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+}
+
+input {
+    width: 100%; 
+    padding: 15px;
+    margin-bottom: 10px; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px; 
+}
+
+button {
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff7f50; /* Change to orange */
+    color: white;
+    font-size: 16px; 
+    cursor: pointer;
+    width: 100%; 
+    margin-bottom: 10px; 
+}
+
+button:hover {
+    background-color: #e66a39; /* Darker orange on hover */
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background-color: #000; /* Or whatever color matches your background */
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("weatherbg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(20px);
+    z-index: 1;
+}
+
+.main-container {
+    position: relative;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    z-index: 2;
+}
